@@ -4,8 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:S3_DeadLineOpg.GUI"
+        xmlns:VM="clr-namespace:S3_DeadLineOpg.GUI.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800">
+        Title="MainWindow" Height="600" Width="800"
+        Loaded="OnLoaded">
+ 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -20,7 +23,7 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1" Grid.Column="1">
             <TextBlock x:Name="userName" Text="Hej log in i textbox under." />
-            <TextBox x:Name="loginBox" Text="Log in her" />
+            <ComboBox x:Name="loginBox" Text="{Binding Customers.CustomersId}" />
         </StackPanel>
     </Grid>
 </Window>

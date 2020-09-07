@@ -1,4 +1,7 @@
-﻿using System;
+﻿using S3_DeadLineOpg.DataAccess;
+using S3_DeadLineOpg.GUI.ViewModel;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +23,28 @@ namespace S3_DeadLineOpg.GUI
     /// </summary>
     public partial class MainWindow: Window
     {
+        readonly CustomerViewModel customersViewModel;
+        private bool isLoaded;
         public MainWindow()
         {
             InitializeComponent();
+
+            customersViewModel = DataContext as CustomerViewModel;
+        }
+
+        /// <summary>
+        /// Is run when UserControl is loaded once
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            if(!isLoaded)
+            {
+                isLoaded = true;
+                customersViewModel.Initialize();
+            }
+
         }
     }
 }
