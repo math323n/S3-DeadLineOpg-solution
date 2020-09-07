@@ -15,12 +15,14 @@ namespace S3_DeadLineOpg.GUI
 
  
         readonly LoginControl loginControl;
+        readonly OrdersControl orderControl;
    
 
         public MainWindow()
         {
             InitializeComponent();
             loginControl = new LoginControl();
+            orderControl = new OrdersControl();
             Display(loginControl);
         }
 

@@ -47,13 +47,13 @@ namespace S3_DeadLineOpg.GUI.ViewModel
         /// </summary>
         public void Initialize()
         {
-            LoadAllCustomers();
+            LoadAllOrders();
         }
 
         /// <summary>
         /// Loads all customers
         /// </summary>
-        private void LoadAllCustomers()
+        private void LoadAllOrders()
         {
             OrderRepository orderRepository = new OrderRepository();
             IEnumerable<Orders> orders = orderRepository.GetAll();

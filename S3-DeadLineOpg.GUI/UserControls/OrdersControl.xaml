@@ -4,23 +4,32 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:S3_DeadLineOpg.GUI.UserControls"
+             xmlns:viewModels="clr-namespace:S3_DeadLineOpg.GUI.ViewModel"
              mc:Ignorable="d"
              d:DesignHeight="600"
              d:DesignWidth="800">
+    <UserControl.DataContext>
+        <viewModels:OrderViewModel />
+    </UserControl.DataContext>
     <Grid>
+        
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="400" />
+            <ColumnDefinition Width="200" />
         </Grid.ColumnDefinitions>
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="300" />
-            <RowDefinition Height="300" />
+            <RowDefinition Height="150" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="10" />
         </Grid.RowDefinitions>
 
-        <StackPanel>
+        <StackPanel Grid.RowSpan="3">
             <ListView x:Name="listViewOrders"
+                     
                       ItemsSource="{Binding Orders}"
-                      SelectedItem="{Binding SelectedOrder}">
+                      >
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="ID"
@@ -28,6 +37,9 @@
                                         Width="55" />
                         <GridViewColumn Header="CustomerID"
                                         DisplayMemberBinding="{Binding CustomerId}"
+                                        Width="80" />
+                        <GridViewColumn Header="Ship City"
+                                        DisplayMemberBinding="{Binding ShipCity}"
                                         Width="80" />
                     </GridView>
                 </ListView.View>

@@ -1,6 +1,7 @@
 ﻿using S3_DeadLineOpg.DataAccess;
 using S3_DeadLineOpg.Entities;
 using S3_DeadLineOpg.GUI.ViewModel;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace S3_DeadLineOpg.GUI.UserControls
     public partial class LoginControl: UserControl
     {
         readonly CustomerViewModel customersViewModel;
-       
+
         private bool isLoaded;
         readonly OrdersControl ordersControl;
         CustomerRepository repo;
@@ -35,20 +36,8 @@ namespace S3_DeadLineOpg.GUI.UserControls
             customersViewModel = DataContext as CustomerViewModel;
         }
 
-        
-        /// <summary>
-        /// Get comboBox items async.
-        /// </summary>
-        /// <returns></returns>
-        private void GetComboBoxItems()
-        {
 
 
-            for(int i = 0; i < customersViewModel.Customers.Count; i++)
-            {
-                loginBox.Items.Add(customersViewModel.Customers[i].CustomerId);
-            }
-        }
 
         /// <summary>
         /// Is run when UserControl is loaded once
@@ -59,19 +48,16 @@ namespace S3_DeadLineOpg.GUI.UserControls
         {
             if(!isLoaded)
             {
-                
+
                 isLoaded = true;
-                
-                
+
                 customersViewModel.Initialize();
-
             }
-
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            
+
             if(passwordBox.Text == "123")
             {
                 Display(ordersControl);
