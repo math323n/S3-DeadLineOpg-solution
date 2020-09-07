@@ -6,46 +6,15 @@
         mc:Ignorable="d"
         Title="MainWindow"
         Height="600"
-        Width="800"
-        Loaded="OnLoaded">
+        Width="800">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="200" />
-        </Grid.ColumnDefinitions>
-
-        <Grid.RowDefinitions>
-            <RowDefinition Height="150" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="150" />
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Row="1"
-                    Grid.Column="1">
-            <TextBlock x:Name="userName"
-                       Margin="5"
-                       Text="Select Customer ID"
-                       FontSize="22" />
-            <ComboBox x:Name="loginBox"
-                      Margin="5"
-                      ItemsSource="{Binding Customers}"
-                      SelectedItem="{Binding SelectedCustomer}"
-                      DisplayMemberPath="CustomerId"
-                      FontSize="18" />
-            <TextBlock Text="Password"
-                       Margin="5"
-                       FontSize="22" />
-            <TextBox x:Name="passwordBox"
-                     Margin="5"
-                     Text="Enter password..."
-                     FontSize="18" />
-            <Button x:Name="loginButton"
-                    Margin="5"
-                    Width="80"
-                    Content="Login"
-                    FontSize="22" />
-        </StackPanel>
+        <DockPanel>
+            <StatusBar DockPanel.Dock="Bottom"
+                       Background="White"
+                       Height="0" />
+            <UserControl x:Name="displayedUserControl" />
+        </DockPanel>
 
     </Grid>
 </Window>

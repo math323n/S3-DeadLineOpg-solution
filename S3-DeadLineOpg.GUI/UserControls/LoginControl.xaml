@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="S3_DeadLineOpg.GUI.UserControls.LoginControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:S3_DeadLineOpg.GUI.UserControls"
+             xmlns:viewModels="clr-namespace:S3_DeadLineOpg.GUI.ViewModel"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             Loaded="OnLoaded">
+    <UserControl.DataContext>
+        <viewModels:CustomerViewModel />
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="200" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="150" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="1"
+                    Grid.Column="1"
+                    Background="DarkGray">
+            <TextBlock x:Name="userName"
+                       Margin="5"
+                       Text="Select Customer ID"
+                       FontSize="22" />
+            <ComboBox x:Name="loginBox"
+                      Margin="5"
+                      ItemsSource="{Binding Customers}"
+                      SelectedItem="{Binding SelectedCustomer}"
+                      DisplayMemberPath="CustomerId"
+                      FontSize="16" />
+            <TextBlock Text="Password"
+                       Margin="5"
+                       FontSize="22" />
+            <TextBox x:Name="passwordBox"
+                     Margin="5"
+                     Text="Enter password..."
+                     FontSize="18" />
+            <Button x:Name="loginButton"
+                    Margin="5"
+                    Width="80"
+                    Content="Login"
+                    FontSize="22"
+                    Click="LoginButton_Click" />
+        </StackPanel>
+        <DockPanel>
+            <StatusBar DockPanel.Dock="Bottom"
+                       Background="White"
+                       Height="0" />
+            <UserControl x:Name="displayedUserControl" />
+        </DockPanel>
+    </Grid>
+</UserControl>
