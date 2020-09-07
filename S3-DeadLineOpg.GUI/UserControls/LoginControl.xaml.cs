@@ -58,14 +58,12 @@ namespace S3_DeadLineOpg.GUI.UserControls
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
 
-            if(passwordBox.Text == "123")
+            if(passwordBox.Text == customersViewModel.SelectedCustomer.ContactName)
             {
                 Display(ordersControl);
+                
             }
-            else
-            {
-                Display(ordersControl);
-            }
+            
         }
         private void Display(UserControl userControl)
         {

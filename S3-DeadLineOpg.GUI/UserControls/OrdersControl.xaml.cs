@@ -21,7 +21,7 @@ namespace S3_DeadLineOpg.GUI.UserControls
     /// </summary>
     public partial class OrdersControl: UserControl
     {
-        readonly OrderViewModel orderViewModel;
+        protected OrderViewModel orderViewModel;
         private Orders selectedOrder;
         private bool isLoaded;
         OrderRepository repo;
@@ -29,8 +29,8 @@ namespace S3_DeadLineOpg.GUI.UserControls
         public OrdersControl()
         {
             InitializeComponent();
-            repo = new OrderRepository();
-            orderViewModel = DataContext as OrderViewModel;
+            
+            
         }
         /// <summary>
         /// Is run when UserControl is loaded once
@@ -41,9 +41,10 @@ namespace S3_DeadLineOpg.GUI.UserControls
         {
             if(!isLoaded)
             {
-
+                repo = new OrderRepository();
                 isLoaded = true;
-
+                orderViewModel = new OrderViewModel();
+                DataContext = orderViewModel;
                 orderViewModel.Initialize();
 
             }
