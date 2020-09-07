@@ -23,7 +23,7 @@ namespace S3_DeadLineOpg.GUI.UserControls
     public partial class LoginControl: UserControl
     {
         readonly CustomerViewModel customersViewModel;
-        private Customers selectedCustomers;
+       
         private bool isLoaded;
         readonly OrdersControl ordersControl;
         CustomerRepository repo;
@@ -62,6 +62,7 @@ namespace S3_DeadLineOpg.GUI.UserControls
                 
                 isLoaded = true;
                 
+                
                 customersViewModel.Initialize();
 
             }
@@ -70,8 +71,8 @@ namespace S3_DeadLineOpg.GUI.UserControls
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            selectedCustomers = customersViewModel.SelectedCustomer;
-            if(selectedCustomers.ContactName == passwordBox.Text)
+            
+            if(passwordBox.Text == "123")
             {
                 Display(ordersControl);
             }

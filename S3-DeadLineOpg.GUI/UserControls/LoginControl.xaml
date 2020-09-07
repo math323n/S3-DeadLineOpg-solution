@@ -22,7 +22,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="150" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="150" />
+            <RowDefinition Height="10" />
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1"
                     Grid.Column="1"
@@ -33,8 +33,8 @@
                        FontSize="22" />
             <ComboBox x:Name="loginBox"
                       Margin="5"
-                      ItemsSource="{Binding Customers}"
-                      SelectedItem="{Binding SelectedCustomer}"
+                      ItemsSource="{Binding Customers }"
+                      SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}"
                       DisplayMemberPath="CustomerId"
                       FontSize="16" />
             <TextBlock Text="Password"

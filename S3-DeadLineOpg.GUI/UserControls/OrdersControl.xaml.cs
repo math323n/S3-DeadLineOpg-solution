@@ -1,4 +1,5 @@
-﻿using S3_DeadLineOpg.Entities;
+﻿using S3_DeadLineOpg.DataAccess;
+using S3_DeadLineOpg.Entities;
 using S3_DeadLineOpg.GUI.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -22,10 +23,32 @@ namespace S3_DeadLineOpg.GUI.UserControls
     {
         readonly OrderViewModel orderViewModel;
         private Orders selectedOrder;
+        private bool isLoaded;
+        OrderRepository repo;
 
         public OrdersControl()
         {
             InitializeComponent();
+            repo = new OrderRepository();
+            orderViewModel = DataContext as OrderViewModel;
+        }
+        /// <summary>
+        /// Is run when UserControl is loaded once
+        /// </summary>
+        /// <param name="sender"></param>s
+        /// <param name="e"></param>
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            if(!isLoaded)
+            {
+
+                isLoaded = true;
+
+                orderViewModel.Initialize();
+
+            }
+
         }
     }
+   
 }
