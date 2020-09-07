@@ -3,8 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:S3_DeadLineOpg.GUI"
-        xmlns:VM="clr-namespace:S3_DeadLineOpg.GUI.ViewModel"
+ 
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800"
         Loaded="OnLoaded">
@@ -24,6 +23,15 @@
         <StackPanel Grid.Row="1" Grid.Column="1">
             <TextBlock x:Name="userName" Text="Hej log in i textbox under." />
             <ComboBox x:Name="loginBox" Text="{Binding Customers.CustomersId}" />
+        </StackPanel>
+        <StackPanel Grid.RowSpan="3">
+            <ListView ItemsSource="{Binding Customers}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding CompanyName}"></GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </StackPanel>
     </Grid>
 </Window>

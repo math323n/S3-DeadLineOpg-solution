@@ -23,26 +23,30 @@ namespace S3_DeadLineOpg.GUI
     /// </summary>
     public partial class MainWindow: Window
     {
-        readonly CustomerViewModel customersViewModel;
+        private CustomerViewModel customersViewModel;
         private bool isLoaded;
         public MainWindow()
         {
             InitializeComponent();
 
-            customersViewModel = DataContext as CustomerViewModel;
+            
+           
         }
 
         /// <summary>
         /// Is run when UserControl is loaded once
         /// </summary>
-        /// <param name="sender"></param>
+        /// <param name="sender"></param>s
         /// <param name="e"></param>
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             if(!isLoaded)
             {
+                customersViewModel = new CustomerViewModel();
                 isLoaded = true;
+                DataContext = customersViewModel;
                 customersViewModel.Initialize();
+               
             }
 
         }
