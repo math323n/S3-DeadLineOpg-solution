@@ -23,14 +23,29 @@ namespace S3_DeadLineOpg.GUI
     /// </summary>
     public partial class MainWindow: Window
     {
+
         private CustomerViewModel customersViewModel;
         private bool isLoaded;
+        CustomerRepository repo;
         public MainWindow()
         {
             InitializeComponent();
+        }
 
-            
-           
+        /// <summary>
+        /// Get comboBox items async.
+        /// </summary>
+        /// <returns></returns>
+        private void GetComboBoxItems()
+        {
+
+
+            for(int i = 0; i < customersViewModel.Customers.Count; i++)
+            {
+                loginBox.Items.Add(customersViewModel.Customers[i].CustomerId);
+            }
+
+
         }
 
         /// <summary>
@@ -43,10 +58,11 @@ namespace S3_DeadLineOpg.GUI
             if(!isLoaded)
             {
                 customersViewModel = new CustomerViewModel();
+                repo = new CustomerRepository();
                 isLoaded = true;
                 DataContext = customersViewModel;
                 customersViewModel.Initialize();
-               
+        
             }
 
         }

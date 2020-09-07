@@ -3,14 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
- 
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800"
+        Title="MainWindow"
+        Height="600"
+        Width="800"
         Loaded="OnLoaded">
- 
+
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="200" />
         </Grid.ColumnDefinitions>
@@ -20,18 +21,31 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="150" />
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBlock x:Name="userName" Text="Hej log in i textbox under." />
-            <ComboBox x:Name="loginBox" Text="{Binding Customers.CustomersId}" />
+        <StackPanel Grid.Row="1"
+                    Grid.Column="1">
+            <TextBlock x:Name="userName"
+                       Margin="5"
+                       Text="Select Customer ID"
+                       FontSize="22" />
+            <ComboBox x:Name="loginBox"
+                      Margin="5"
+                      ItemsSource="{Binding Customers}"
+                      SelectedItem="{Binding SelectedCustomer}"
+                      DisplayMemberPath="CustomerId"
+                      FontSize="18" />
+            <TextBlock Text="Password"
+                       Margin="5"
+                       FontSize="22" />
+            <TextBox x:Name="passwordBox"
+                     Margin="5"
+                     Text="Enter password..."
+                     FontSize="18" />
+            <Button x:Name="loginButton"
+                    Margin="5"
+                    Width="80"
+                    Content="Login"
+                    FontSize="22" />
         </StackPanel>
-        <StackPanel Grid.RowSpan="3">
-            <ListView ItemsSource="{Binding Customers}">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding CompanyName}"></GridViewColumn>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-        </StackPanel>
+
     </Grid>
 </Window>

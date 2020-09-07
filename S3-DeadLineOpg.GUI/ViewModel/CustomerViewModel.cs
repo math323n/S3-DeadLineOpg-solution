@@ -10,8 +10,9 @@ namespace S3_DeadLineOpg.GUI.ViewModel
 {
     public class CustomerViewModel : ViewModel, INotifyPropertyChanged
     {
+
         private Customers selectedCustomer;
-        protected ObservableCollection<Customers> customers;
+      
 
         #region Constructor
         public CustomerViewModel()
